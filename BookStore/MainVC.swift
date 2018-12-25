@@ -16,12 +16,16 @@ class MainVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCont
     @IBOutlet var bookTitle: UITextField!
     @IBOutlet var bookAuthor: UITextField!
     @IBOutlet var bookDate: UITextField!
+    @IBOutlet var bookGenre: UITextField!
     let imagePicker = UIImagePickerController()
     @IBOutlet var pickPhoto: UIButton!
+    var refBooks: DatabaseReference!
+    var imageURL : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        refBooks = Database.database().reference().child("Books")
     }
     
     func alert(titleParam : String, messageParam: String) {
@@ -34,9 +38,8 @@ class MainVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCont
         self.present(alert, animated: true, completion: nil)
     }
     
-    func saveImage() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let storageRef = Storage.storage().reference().child("book_image_urls").child("\(uid).png")
+    func saveImage(key: String) {
+        let storageRef = Storage.storage().reference().child("Books Images").child("\(key).png")
         guard let imageData = UIImageJPEGRepresentation(bookImage.image!, 0.75) else { return }
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
@@ -50,7 +53,7 @@ class MainVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCont
             }
         }
     }
-    
+ 
     func noCamera(){
         let alertVC = UIAlertController(title: "No Camera",message: "Sorry, this device has no camera",preferredStyle: .alert)
         let okAction = UIAlertAction(
@@ -71,7 +74,6 @@ class MainVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCont
         }
     }
     
-    
     func photoFromGallery() {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
@@ -82,13 +84,20 @@ class MainVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCont
     
     
     @IBAction func saveInfo(_ sender: Any) {
-        saveImage()
-        let ref = Database.database().reference()
-        ref.child("Title").setValue(bookTitle.text)
-        ref.child("Author").setValue(bookAuthor.text)
-        ref.child("Date").setValue(bookDate.text)
+        addBook()
     }
     
+    func addBook(){
+        let key = refBooks.childByAutoId().key
+        let book = ["id":key,
+                      "title": bookTitle.text! as String,
+                      "author": bookAuthor.text! as String,
+                      "date": bookDate.text! as String,
+                      "genre": bookGenre.text! as String
+            ]
+        refBooks.child(key).setValue(book)
+        saveImage(key: key)
+    }
     
     @IBAction func pickPhoto(_ sender: Any) {
         let alertController = UIAlertController.init(title:"Select a photo", message: "", preferredStyle: .alert)
