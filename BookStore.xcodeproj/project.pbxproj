@@ -10,6 +10,7 @@
 		62A80C4321D1217E00B37B82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62A80C4221D1217E00B37B82 /* GoogleService-Info.plist */; };
 		62B62DBA21D2441600065327 /* BookIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 62B62DB921D2441500065327 /* BookIcon.png */; };
 		62B62DBC21D24E0E00065327 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B62DBB21D24E0E00065327 /* Book.swift */; };
+		62BA4A7021D2B75A00597D26 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA4A6F21D2B75A00597D26 /* TableViewCell.swift */; };
 		62BFD1AB21D006E800BA9241 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BFD1AA21D006E800BA9241 /* MainVC.swift */; };
 		62DABD8621C70344005C709C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DABD8521C70344005C709C /* AppDelegate.swift */; };
 		62DABD8B21C70344005C709C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62DABD8921C70344005C709C /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		62A80C4221D1217E00B37B82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		62B62DB921D2441500065327 /* BookIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BookIcon.png; path = ../../../../Downloads/BookIcon.png; sourceTree = "<group>"; };
 		62B62DBB21D24E0E00065327 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		62BA4A6F21D2B75A00597D26 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		62BFD1AA21D006E800BA9241 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		62DABD8221C70344005C709C /* BookStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62DABD8521C70344005C709C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				62DABD8C21C70347005C709C /* Assets.xcassets */,
 				62DABD8E21C70347005C709C /* LaunchScreen.storyboard */,
 				62DABD9121C70347005C709C /* Info.plist */,
+				62BA4A6F21D2B75A00597D26 /* TableViewCell.swift */,
 			);
 			path = BookStore;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62BA4A7021D2B75A00597D26 /* TableViewCell.swift in Sources */,
 				62B62DBC21D24E0E00065327 /* Book.swift in Sources */,
 				62DABD8621C70344005C709C /* AppDelegate.swift in Sources */,
 				62E1E6BA21CFD19100BD0227 /* MainTableVC.swift in Sources */,
